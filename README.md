@@ -1,6 +1,6 @@
 # WindVault
 
-WindVault is a lightweight and efficient note-taking application built with Spring Boot. It provides a structured way to create, store, and manage notes.
+WindVault is a lightweight and efficient note-taking application built with Spring Boot. It provides a structured way to create, store, and manage notes and provides authentication and authorisation.
 
 ## Features
 - Create, update, delete, and view notes
