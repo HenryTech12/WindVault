@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HTML</title>
+  
+  <!-- HTML -->
+  
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+
+<body>
+  <!-- Project -->
+  <main class="container" >
+     <form th:object="${noteList}" id="form_home_ptr" method="post" th:method="POST">
+         <h2 class="h">Wind Vault</h2>
+     <div class="header">
+       <input type="text" placeholder="Dev">
+       <span>All notes matching Dev are displayed below</span>
+     </div>
+
+     <section class="content" th:each="note, index : ${noteList.notes}">
+        <button class="holder" th:formaction="@{/open(id=${index.index + 1})}" th:value="${index.index + 1}" th:field="*{notes}" id="holderBtn">
+        <section id="lock">
+            <h2 th:text="${note.getTitle()}" th:field="${note.title}"></h2>
+        </section>
+        <nav class="det">
+          <span th:text="${note.getEditedDate()}" th:field="${note.editedDate}"></span>
+          <span th:text="${note.getEditedTime()}" th:field="${note.editedTime}"></span>
+        </nav>
+
+      </button>
+     </section>
+     <button class="addBtn" th:formaction="add"><span class="material-symbols-outlined">add</span></button>
+     </form>
+  </main>
+  <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="css/viewnote.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<body>
+    <main class="container">
+     <form th:object="${noteDTO}" th:method="POST" method="post" id="form">
+      <section class="headers">
+          <header>notes</header>
+          <span class="material-symbols-outlined vertline" onclick="showBtn()">more_vert</span>
+      </section>
+
+         <p class="btn-an" id="buttons">
+          <button formaction="save">
+            <span class="material-symbols-outlined">save</span>
+          </button>
+          <button id="pinAsDiary">
+            <span class="material-symbols-outlined">pinch</span>
+          </button>
+          <button formaction="home" id="gohome"><span class="material-symbols-outlined">close</span>
+          </button>
+          <button th:formaction="@{/delete(id=${id})}"><span class="material-symbols-outlined">delete</span>
+          </button>
+      </p>
+
+         <section class="diary" id="diary">
+             <span class="material-symbols-outlined close" onclick="closeDiary()">close</span>
+             <button th:formaction="createPin">CREATE DIARY</button>
+         </section>
+
+      <div class="content">
+        <input type="text" class="dash" placeholder="Title" th:field="*{title}" required>
+       <div class="h-content dt">
+          <section>
+            <input type="date" class="dash" placeholder="Date" value="Date" th:field="*{editedDate}" required>
+          </section>
+          
+          <section>
+            <input type="time" class="dash" placeholder="Time" th:field="*{editedTime}" required>
+          </section>
+      </div>
+     
+    <div class="message">
+      <textarea class="addMsg" placeholder="Add your text here.." th:field="*{message}" id="txtarea" required></textarea>
+    </div>
+   </div>
+     </form>
+    </main>
+    <script src="js/viewnote.js">
+    </script>
+</body>
+
+</html>
